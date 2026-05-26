@@ -1,0 +1,54 @@
+# Accessibility Review Checklist
+
+Quick reference for reviewing documentation before publication.
+
+---
+
+## Language and readability
+
+- [ ] Sentences are under 25 words (on average)
+- [ ] Technical terms are defined on first use
+- [ ] No idioms, metaphors, or figurative language that doesn't translate literally
+- [ ] Common words used in place of jargon where possible
+- [ ] Reading level is appropriate for the audience (Grade 8–10 for general developer docs)
+
+## Structure
+
+- [ ] Page has exactly one H1 (the title)
+- [ ] Heading levels are not skipped (H1 → H2 → H3, never H1 → H3)
+- [ ] Each heading describes the section content out of context
+- [ ] Long pages (4+ sections) have a table of contents
+- [ ] Lists are used for 3+ enumerable items instead of comma-separated sentences
+
+## Links
+
+- [ ] All link text makes sense when read in isolation
+- [ ] No "click here," "read more," or bare URLs used as link text
+- [ ] Links to the same destination use the same link text throughout the page
+
+## Images and media
+
+- [ ] Every informative image has alt text
+- [ ] Alt text describes what the image shows (not just what it is)
+- [ ] Decorative images have empty alt text (`alt=""`)
+- [ ] Complex diagrams have a text description below or nearby
+- [ ] Color is not the only way to convey information (status, errors, categories)
+
+## Code
+
+- [ ] All code blocks have a language specified
+- [ ] Plain-language context is provided before each code block
+- [ ] Comments in code label what non-obvious sections do
+- [ ] Expected output or responses are labeled and shown
+
+## Tables
+
+- [ ] All tables have a header row
+- [ ] No merged cells or nested tables
+- [ ] Tables are used for genuinely tabular data, not layout
+
+## Final check
+
+- [ ] Heading outline (H1–H3) reads as a logical summary of the page
+- [ ] All link text sounds sensible when read aloud out of context
+- [ ] Page reviewed with browser reader view or screen reader (even briefly)
