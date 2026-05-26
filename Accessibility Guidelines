@@ -1,0 +1,180 @@
+# Accessibility Writing Guidelines
+
+## 1. Plain language
+
+Plain language is not simplification — it's precision. The goal is to remove the cognitive overhead of decoding your sentences so readers can focus on understanding the content.
+
+### Write short sentences
+
+Aim for sentences under 25 words. If a sentence needs more, look for a natural break.
+
+| Long | Shorter |
+|---|---|
+| In the event that you have not yet configured your environment, you will need to complete the setup process before proceeding to the next step. | Before you continue, complete the environment setup. |
+
+### Use common words
+
+Choose the shorter, more common word when you have options. Technical terms are fine — jargon is not.
+
+| Avoid | Prefer |
+|---|---|
+| utilize | use |
+| leverage | use |
+| facilitate | help, make, allow |
+| in order to | to |
+| at this point in time | now |
+| prior to | before |
+
+### Define technical terms on first use
+
+When a term is necessary (and many technical terms are), define it the first time you use it. After that, use the term without re-explaining.
+
+> The SDK (software development kit) includes libraries, code samples, and documentation. To install the SDK, run...
+
+### Avoid idioms and figurative language
+
+Idioms don't translate well — across languages or across contexts. "Under the hood," "out of the box," and "hit the ground running" may be opaque to non-native English speakers and some neurodivergent readers.
+
+Say what you mean directly.
+
+---
+
+## 2. Structure and navigation
+
+Readers with cognitive disabilities, attention differences, or reading difficulties rely heavily on structure to navigate. Good structure also reduces cognitive load for everyone.
+
+### Use headings as a skeleton
+
+Every page should have a logical heading hierarchy that makes sense when read in sequence — because that's how screen readers and keyboard users often navigate.
+
+- One H1 per page (the page title)
+- H2 for major sections
+- H3 for sub-sections within an H2
+- Never skip a level (H1 → H3 with no H2 in between)
+
+Headings are labels, not prose. Write them to be understood out of context:
+
+| Vague | Descriptive |
+|---|---|
+| More about this | Authentication options |
+| Next steps | How to test your integration |
+
+### Write descriptive link text
+
+Screen readers often pull up a list of all links on a page. Link text must make sense in isolation.
+
+| Inaccessible | Accessible |
+|---|---|
+| Click [here] for the API reference | See the [API reference] |
+| [Read more] about authentication | [Authentication overview] |
+| The full guide is [available here] | See the [full integration guide] |
+
+### Use lists for enumerable items
+
+If you're listing three or more things, use a list — not a comma-separated sentence. Lists are easier to scan and easier to navigate with assistive technology.
+
+### Table of contents for long pages
+
+For any page longer than 3–4 sections, include a table of contents at the top. This allows readers to jump directly to what they need without scrolling.
+
+---
+
+## 3. Images and visual content
+
+### Write meaningful alt text
+
+Alt text is read aloud by screen readers and displayed when images don't load. It should describe what the image *shows*, not what it *is*.
+
+**Formula:** `[Type of image] showing [what it depicts, specifically]`
+
+```markdown
+<!-- Good -->
+![A sequence diagram showing the three-step OAuth 2.0 flow: client requests token, server validates credentials, server returns access token](oauth-flow.png)
+
+<!-- Not enough -->
+![OAuth flow](oauth-flow.png)
+
+<!-- Redundant -->
+![Image of a diagram of the OAuth flow](oauth-flow.png)
+```
+
+For decorative images that add no information, use empty alt text (`alt=""`). This tells screen readers to skip the image.
+
+### Include text alternatives for complex visuals
+
+If a diagram is the only way to understand a concept, readers who can't see the diagram are blocked. For complex visuals (architecture diagrams, multi-step flows, comparison charts), include a text description:
+
+> The diagram above shows the three-layer architecture: the client layer sends requests to the API gateway, which routes them to either the auth service or the data service depending on the request type.
+
+### Don't use color as the only signal
+
+If your diagram uses color to show status (red = error, green = success), also use shape, label, or pattern. Color-blind readers, and readers printing in grayscale, need the information to be available another way.
+
+---
+
+## 4. Code and technical content
+
+### Don't rely on syntax highlighting alone
+
+Code examples should be readable even without color. Use comments in code to label important sections:
+
+```python
+# Authenticate and get a session token
+token = client.authenticate(api_key=API_KEY)
+
+# Use the token to make a request
+response = client.get("/data", headers={"Authorization": f"Bearer {token}"})
+```
+
+### Label code block languages
+
+Always specify the language on fenced code blocks. This enables syntax highlighting, which helps readers parse structure — and also tells assistive technology what kind of content it is.
+
+### Provide plain-language context before code
+
+Don't drop a code block without explaining what it does. A reader using a screen reader will hear the code read character by character unless they skip it — they need the surrounding prose to tell them whether the block is worth reading.
+
+> The following example shows how to initialize the client with a custom timeout. Replace `YOUR_API_KEY` with your actual key.
+
+```python
+client = APIClient(api_key="YOUR_API_KEY", timeout=30)
+```
+
+---
+
+## 5. Tables
+
+Tables are difficult for screen readers to navigate if they're not structured correctly.
+
+### Always use a header row
+
+The first row of every table must be a header row. This gives screen readers the column context when reading cells.
+
+### Keep tables simple
+
+Avoid merged cells, nested tables, and complex layouts. If a table is getting complicated, consider whether a list or prose would work better.
+
+### Don't use tables for layout
+
+Tables are for tabular data — information that genuinely has rows and columns. Don't use them to create visual columns of text or to place content side by side.
+
+---
+
+## 6. Testing your documentation for accessibility
+
+You don't need specialized tools to catch most accessibility issues. A basic review covers the majority of problems:
+
+1. **Read the headings in sequence.** Do they form a logical outline of the page?
+2. **Read all link text aloud.** Does each one make sense without surrounding context?
+3. **Cover the images.** Does the alt text fully replace the information?
+4. **Read the page with a screen reader.** [NVDA](https://www.nvaccess.org/) (Windows, free) and VoiceOver (Mac, built-in) are both usable for basic testing.
+5. **Check reading level.** Aim for Grade 8–10 for most developer docs. [Hemingway App](https://hemingwayapp.com/) is a quick check.
+
+---
+
+## References
+
+- [W3C Web Content Accessibility Guidelines (WCAG) 2.1](https://www.w3.org/TR/WCAG21/)
+- [Plain Language Action and Information Network (PLAIN)](https://www.plainlanguage.gov/)
+- [Google Developer Documentation Style Guide — Accessibility](https://developers.google.com/style/accessibility)
+- [Microsoft Writing Style Guide — Accessibility](https://learn.microsoft.com/en-us/style-guide/accessibility/accessibility-guidelines-requirements)
