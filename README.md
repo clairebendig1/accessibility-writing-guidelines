@@ -10,8 +10,8 @@ These guidelines are adapted from the accessibility writing standards I authored
 
 | File | What it covers |
 |---|---|
-| [guidelines.md](Accessibility Checklist) | Full writing guidelines — structure, language, media, and testing |
-| [checklist.md](Accessibility Guidelines) | Quick-reference checklist for accessibility review |
+| [Accessibility Guidelines](https://github.com/clairebendig1/accessibility-writing-guidelines/blob/main/Accessibility%20Guidelines) | Full writing guidelines — structure, language, media, and testing |
+| [Accessibility Checklist](https://github.com/clairebendig1/accessibility-writing-guidelines/blob/main/Accessibility%20Checklist) | Quick-reference checklist for accessibility review |
 
 ---
 
